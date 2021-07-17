@@ -20,6 +20,9 @@ app.post('/api/notes', (req,res) => {
    const newNote = req.body;
    console.log(noteArray)
    noteArray.push(newNote)
+   noteArray.forEach((note, index)=>{
+      note.id = index + 1;
+   })
    fs.writeFile(path.join(__dirname,'./db/db.json'), JSON.stringify(noteArray), (err) =>{
       console.log(err)
    })
@@ -27,7 +30,9 @@ app.post('/api/notes', (req,res) => {
 
 })
 
+app.delete('/api/notes', (req,res) => {
 
+})
 
 
 
