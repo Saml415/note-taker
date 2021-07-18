@@ -26,7 +26,7 @@ app.post('/api/notes', (req,res) => {
    fs.writeFile(path.join(__dirname,'./db/db.json'), JSON.stringify(noteArray), (err) =>{
       console.log(err)
    })
-  
+  res.end();
 
 })
 
