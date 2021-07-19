@@ -4,7 +4,7 @@ const noteArray = require('./db/db.json')
 const path = require('path')
 const PORT = process.env.PORT || 3000
 const express = require("express");
-const { networkInterfaces } = require('os');
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -30,8 +30,16 @@ app.post('/api/notes', (req,res) => {
 
 })
 
-app.delete('api/notes/:id', (req,res) => {
+app.delete('/api/notes/:id', (req,res) => {
+  
+   const noteEntry = req.params.id
    
+   noteArray.splice(noteEntry)
+   fs.writeFile(path.join(__dirname,'./db/db.json'), JSON.stringify(noteArray), (err) =>{
+      console.log(err)
+   })
+   res.end();
+
 
 })
 
