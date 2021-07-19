@@ -30,7 +30,8 @@ app.post('/api/notes', (req,res) => {
 
 })
 
-app.delete('/api/notes', (req,res) => {
+app.delete('api/notes/:id', (req,res) => {
+   
 
 })
 
